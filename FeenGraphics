@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Feen Graphics — Clothing Manufacturing & Custom Prints</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0d0f;
+      --card:#0f1113;
+      --muted:#9aa0a6;
+      --accent:#70e0a6;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg,var(--bg), #080909 80%);
+      color:#e6eef1;
+      line-height:1.45;
+      padding:24px;
+    }
+
+    .container{
+      max-width:980px;
+      margin:0 auto;
+    }
+
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      margin-bottom:22px;
+    }
+
+    .brand {
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+
+    .logo {
+      width:84px;
+      height:84px;
+      border-radius:20px;
+      background:var(--glass);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      padding:6px;
+      border:1px solid rgba(255,255,255,0.04);
+    }
+
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
+
+    h1{
+      margin:0;
+      font-size:20px;
+      font-weight:700;
+    }
+
+    .tag{
+      color:var(--muted);
+      font-size:13px;
+      margin-top:4px;
+    }
+
+    nav{
+      margin-left:auto;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    .navbtn{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.05);
+      color:var(--muted);
+      padding:8px 12px;
+      border-radius:10px;
+      font-size:13px;
+      cursor:pointer;
+    }
+
+    .hero{
+      margin-top:10px;
+      padding:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    .hero-left{flex:0 0 260px}
+    .hero-right{flex:1}
+
+    .bio{
+      color:#dfe9ea;
+      font-size:15px;
+      margin-bottom:12px;
+    }
+
+    .chips{display:flex;gap:10px;flex-wrap:wrap}
+
+    .chip{
+      background:rgba(255,255,255,0.03);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:13px;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    section { margin-top:20px; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+
+    .grid img{
+      width:100%;
+      height:140px;
+      object-fit:cover;
+      border-radius:10px;
+      display:block;
+      border:1px solid rgba(255,255,255,0.03);
+      cursor:pointer;
+    }
+
+    .services{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .service{
+      background:var(--card);
+      padding:12px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.02);
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .contact-row{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-top:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      background:linear-gradient(90deg,var(--accent), #58d89a);
+      color:#062016;
+      border:none;
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:600;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    .outline{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      color:var(--muted);
+      padding:10px 14px;
+      border-radius:10px;
+      text-decoration:none;
+    }
+
+    footer{
+      margin-top:28px;
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
+      opacity:0.9;
+    }
+
+    @media (max-width:720px){
+      .hero{flex-direction:column}
+      .hero-left{width:100%}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      body{padding:16px}
+      .logo{width:72px;height:72px}
+    }
+
+    @media (max-width:420px){
+      .grid img{height:120px}
+      .logo{width:60px;height:60px}
+    }
+
+    .modal{
+      position:fixed; inset:0; display:none; align-items:center; justify-content:center;
+      background:rgba(0,0,0,0.7); z-index:60;
+      padding:20px;
+    }
+
+    .modal img{
+      max-width:96%;
+      max-height:86%;
+      border-radius:8px;
+    }
+
+    .modal.show{ display:flex; }
+    .smallmuted{ color:var(--muted); font-size:13px }
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+
+    <header>
+      <div class="brand">
+        <div class="logo">
+          <img src="/mnt/data/214F00D3-58A4-48FC-BC18-1DA71D8C6B4E.jpeg" alt="Feen Graphics logo">
+        </div>
+        <div>
+          <h1>Feen Graphics</h1>
+          <div class="tag">Clothing manufacturing • Leeds 🇬🇧 — Custom designs • DTF • Sublimation • Print press</div>
+        </div>
+      </div>
+
+      <nav>
+        <a class="navbtn" href="#about">About</a>
+        <a class="navbtn" href="#services">Services</a>
+        <a class="navbtn" href="#portfolio">Portfolio</a>
+        <a class="navbtn" href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="about">
+      <div class="hero-left">
+        <p class="bio">
+          Feen Graphics — Clothing manufacturing based in Leeds. We create custom designs and supply DTF & sublimation prints,
+          operate a print press, and provide sublimation supplies. All prints — from marketing to memories.
+        </p>
+
+        <div class="chips">
+          <div class="chip">DTF Printing</div>
+          <div class="chip">Sublimation</div>
+          <div class="chip">Custom Apparel</div>
+          <div class="chip">Print Supplies</div>
+          <div class="chip">UK — Leeds</div>
+        </div>
+
+        <div class="contact-row" style="margin-top:14px">
+          <a class="btn" href="https://instagram.com/feengraphics" target="_blank">🖤 DM on Instagram</a>
+
+          <a class="outline" href="mailto:feengraphicsenquiries@gmail.com?subject=Feen%20Graphics%20Enquiry">
+            ✉️ Email
+          </a>
+
+          <a class="outline" href="#portfolio">View Portfolio</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div style="border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.03);">
+          <img src="/mnt/data/042EA1BF-A799-42A8-A10E-A2B80B268DEE.jpeg" alt="Feen Graphics Instagram preview"
+               style="width:100%; height:260px; object-fit:cover;">
+        </div>
+        <div style="margin-top:8px; color:var(--muted); font-size:13px">Instagram: <strong>@feengraphics</strong></div>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2 style="margin:0 0 10px 0; font-size:16px">Services</h2>
+      <div class="services">
+        <div class="service">Custom Apparel Manufacturing — bulk runs & one-offs.</div>
+        <div class="service">Direct-to-Film (DTF) Printing — vivid, durable prints.</div>
+        <div class="service">Sublimation Printing & Supplies — full-colour transfers.</div>
+        <div class="service">Print Press & Fulfillment for brands and events.</div>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <h2 style="margin:16px 0 10px 0; font-size:16px">Portfolio</h2>
+
+      <div class="grid">
+        <div><img src="/mnt/data/042EA1BF-A799-42A8-A10E-A2B80B268DEE.jpeg" onclick="openModal(this.src)"></div>
+        <div><img src="/mnt/data/214F00D3-58A4-48FC-BC18-1DA71D8C6B4E.jpeg" onclick="openModal(this.src)"></div>
+        <div><img src="/mnt/data/042EA1BF-A799-42A8-A10E-A2B80B268DEE.jpeg" onclick="openModal(this.src)"></div>
+        <div><img src="/mnt/data/214F00D3-58A4-48FC-BC18-1DA71D8C6B4E.jpeg" onclick="openModal(this.src)"></div>
+        <div><img src="/mnt/data/042EA1BF-A799-42A8-A10E-A2B80B268DEE.jpeg" onclick="openModal(this.src)"></div>
+        <div><img src="/mnt/data/214F00D3-58A4-48FC-BC18-1DA71D8C6B4E.jpeg" onclick="openModal(this.src)"></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 style="margin:16px 0 10px 0; font-size:16px">Contact</h2>
+
+      <p class="smallmuted">Instagram DM preferred: <a href="https://instagram.com/feengraphics" target="_blank" style="color:var(--accent)">@feengraphics</a></p>
+
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:10px">
+        <a class="btn" href="https://instagram.com/feengraphics" target="_blank">Send a DM</a>
+
+        <form onsubmit="composeMail(event)" style="display:inline-block">
+          <input type="hidden" id="subject" value="Quote request from website">
+          <label for="nameField" class="smallmuted" style="display:block; margin-bottom:6px">Quick quote</label>
+
+          <div style="display:flex; gap:8px; flex-wrap:wrap">
+            <input id="nameField" placeholder="Your name" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit" required>
+            <input id="msgField" placeholder="Short message" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit; min-width:220px" required>
+            <button class="btn" type="submit">Compose email</button>
+          </div>
+        </form>
+      </div>
+
+      <p class="smallmuted" style="margin-top:12px">
+        Direct email: <strong>feengraphicsenquiries@gmail.com</strong>
+      </p>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Feen Graphics — Leeds, UK
+    </footer>
+  </div>
+
+  <div id="modal" class="modal" onclick="closeModal()">
+    <img id="modalImg" alt="Preview">
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function openModal(src){
+      const m = document.getElementById('modal');
+      const im = document.getElementById('modalImg');
+      im.src = src;
+      m.classList.add('show');
+    }
+
+    function closeModal(){
+      const m = document.getElementById('modal');
+      m.classList.remove('show');
+      document.getElementById('modalImg').src = '';
+    }
+
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') closeModal();
+    });
+
+    function composeMail(e){
+      e.preventDefault();
+      var name = encodeURIComponent(document.getElementById('nameField').value.trim());
+      var msg = encodeURIComponent(document.getElementById('msgField').value.trim());
+      var subject = encodeURIComponent(document.getElementById('subject').value);
+      var mailto = 'mailto:feengraphicsenquiries@gmail.com'
+                + '?subject=' + subject
+                + '&body=' + encodeURIComponent('Name: ') + name + '%0D%0A%0D%0A' 
+                + encodeURIComponent('Message: ') + msg;
+      window.location.href = mailto;
+    }
+  </script>
+</body>
+</html>
